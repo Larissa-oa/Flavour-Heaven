@@ -3,7 +3,7 @@ import githubLogo from '../assets/github.png'
 
 const Footer = () => {
   return (
-    <footer class="footer">
+    <footer className="footer">
     <div className="footer-content">
       <p>&copy; 2025 Recipe App. All rights reserved.</p>
       <div className="footer-links">
