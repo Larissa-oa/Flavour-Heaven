@@ -4,9 +4,9 @@ import Sidebar from "./components/Sidebar";
 import Footer from "./components/Footer";
 import RecipesList from "./components/RecipesList";
 import HomePage from "./pages/HomePage";
+import Carousel from "./components/Carousel";
 import AboutPage from "./pages/AboutPage";
-import RecipeDetailPage from "./pages/RecipeDetailPage";
-import RecipesPage from "./pages/RecipesPage";
+import RecipeDetailPage from "./pages/RecipeDetails";
 import NotFoundPage from "./pages/NotFoundPage";
 import { Routes, Route } from "react-router-dom";
 
@@ -15,17 +15,17 @@ function App() {
     <div>
       <Navbar />
       <Sidebar />
-      <RecipesList />
-      <Footer />
       <div className="pages">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/recipes/:recipesId" element={<RecipeDetailPage />} />
-          <Route path="/recipes" element={<RecipesPage />} />
+          <Route path="/recipes" element={<RecipesList />} />
           <Route path="*" element={<NotFoundPage />} />
+          <Route path='/' element={<Carousel />} />
         </Routes>
       </div>
+      <Footer />
     </div>
   );
 }

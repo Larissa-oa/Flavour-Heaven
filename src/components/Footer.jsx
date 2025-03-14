@@ -8,7 +8,7 @@ const Footer = () => {
       <p>&copy; 2025 Recipe App. All rights reserved.</p>
       <div className="footer-links">
         <a href="#">Privacy Policy</a> | <a href="#">Contact Us</a>
-        <a href="#"><img src={githubLogo} /></a>
+        <a href="#"><img src={githubLogo}  id="github-logo"/></a>
       </div>
     </div>
   </footer>

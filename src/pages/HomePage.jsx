@@ -1,4 +1,5 @@
 import React from 'react'
+import Carousel from '../components/Carousel'
 
 const HomePage = () => {
   return (
@@ -7,8 +8,9 @@ const HomePage = () => {
         <h1> Recipe App </h1>
         <p> Cook, Eat, Repeat – Delicious adventures await with every recipe!</p>
         </header>
-        <div className='Carousel'> </div>
-      
+        <div className="carousel-wrapper">
+          <Carousel />
+        </div>
     </div>
   )
 }

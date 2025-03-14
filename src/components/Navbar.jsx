@@ -1,5 +1,5 @@
 import React from 'react'
-import recipesLogo from "../assets/recipe-logo.jpg";
+import recipesLogo from "../assets/recipe-logo.jpg"
 import { Link, NavLink } from 'react-router-dom';
 
 
@@ -8,7 +8,7 @@ const Navbar = () => {
      <nav className="navbar">
      <div className="navbar-logo">
       <Link to="/">
-       <img src={recipesLogo} alt="Logo" className="logo" />
+       <img src={recipesLogo}  className="logo"/>
        </Link>
      </div>
      <ul className="navbar-links">

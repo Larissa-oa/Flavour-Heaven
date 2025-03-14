@@ -1,18 +1,20 @@
 import React from 'react'
-
+import searchIcon from '../assets/search1.png'
+import homeIcon from '../assets/home.png'
+import likesIcon from '../assets/likes.png'
 const Sidebar = () => {
   return (
     <div className="sidebar">
     <div> 
-    <span><a href="#">Home</a></span>
+    <span><img src={homeIcon} id="sidebar-icon"/></span>
     </div>
+    <div>
+          <button id="sidebar-favorites"><img src={likesIcon} /></button>
+          </div>
         <div id="sidebar-item">
-          <span><a href="#">Search</a></span>
-          <input type="text" placeholder="Search recipes..." className="search-input" />
-        </div>
-        <div className="sidebar-item">
-          <span><a href="#">Favorite Recipes</a></span>
-          <button>View your favorite recipes here.</button>
+          <div> <img src={searchIcon} id="sidebar-icon"/> 
+          <input type="text" placeholder="Search" className="search-input" />
+          </div>
         </div>
       </div>
   )
