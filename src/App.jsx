@@ -22,7 +22,6 @@ function App() {
           <Route path="/recipes/:recipesId" element={<RecipeDetailPage />} />
           <Route path="/recipes" element={<RecipesList />} />
           <Route path="*" element={<NotFoundPage />} />
-          <Route path='/' element={<Carousel />} />
         </Routes>
       </div>
       <Footer />

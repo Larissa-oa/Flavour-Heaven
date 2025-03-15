@@ -1,4 +1,4 @@
-import recipesData from "../recipes.json";
+import recipesData from "../assets/recipes.json";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -32,16 +32,12 @@ const RecipesList = () => {
             <section id="buttons">
               <button onClick={() => deleteBtn(recipe.id)}>Delete</button>
 
+              <Link to={`/recipes/${recipe.id}`}>
+                {" "}
+                {/*  has to be in backticks and curly braces */}
+                <button>Details </button>
+              </Link>
 
-              
-              
-                      <Link to={`/recipes/${recipe.id}`}>    {/*  has to be in backticks and curly braces */}
-                        <button>Details </button>   
-                      </Link>
-             
-
-              
-              
               <button>Favorite</button>
             </section>
           </div>

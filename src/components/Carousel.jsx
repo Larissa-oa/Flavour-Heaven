@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import recipesData from "../recipes.json";
+import recipesData from "../assets/recipes.json";
 import { Link } from "react-router-dom";
 import "./Carousel.css";
 

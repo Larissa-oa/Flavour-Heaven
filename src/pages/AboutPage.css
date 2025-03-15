@@ -1,0 +1,131 @@
+.about-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: "Arial", sans-serif;
+}
+
+.about-image-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.about-header-image {
+  max-width: 50%;
+  margin-top: 100px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 8px 10px 10px rgba(0, 0, 0, 0.4);
+}
+
+.about-content {
+  line-height: 1.6;
+}
+
+.about-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.about-intro {
+  font-size: 1.25rem;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.team-section-title,
+.mission-title {
+  font-size: 2rem;
+  margin: 30px 0 20px;
+  color: #333;
+}
+
+.team-member {
+  margin-bottom: 40px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.team-member h3 {
+  color: #333;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.team-member p {
+  color: #333;
+  font-size: 1.25rem;
+  margin-bottom: 25px;
+}
+
+.larissa {
+  color: rgb(5, 195, 5);
+}
+
+.rojda {
+  color: rgb(245, 2, 2);
+}
+
+.vassilis {
+  color: rgb(62, 62, 255);
+}
+
+.social-links {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.social-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  background-color: #e2e2e2;
+  transition: all 0.2s ease;
+}
+
+.linkedin {
+  color: #0077b5;
+  border: 2px solid #0077b5;
+}
+
+.github {
+  color: #333;
+  border: 2px solid #333;
+}
+
+.social-icon {
+  width: 26px;
+  height: 26px;
+  margin-right: 8px;
+}
+
+.social-button span {
+  display: inline-block;
+}
+
+.social-button:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+  background-color: #e8e8e8;
+}
+
+.mission-text {
+  margin-bottom: 20px;
+  font-size: 1.25rem;
+}
+
+.closing {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-top: 40px;
+  color: #333;
+}
