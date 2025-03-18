@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import "./RecipesList.css";
 
 const RecipesList = ({ recipes, addToFavourites, onUpdate }) => {
   // State for sort type
@@ -119,7 +120,7 @@ const RecipesList = ({ recipes, addToFavourites, onUpdate }) => {
             />
 
             <div id="text-container">
-              <h3>Name: {recipe.name}</h3>
+              <h3>{recipe.name}</h3>
               <p>Calories: {recipe.calories}</p>
               <p>Servings: {recipe.servings}</p>
 
@@ -133,7 +134,6 @@ const RecipesList = ({ recipes, addToFavourites, onUpdate }) => {
               </div>
 
               <div id="buttons">
-                {/* Fix: Use a button inside Link or just style the Link as a button */}
                 <Link to={`/recipes/${recipe.id}`}>
                   <button id="details-btn" className="btn-recipe">
                     Details
@@ -141,34 +141,33 @@ const RecipesList = ({ recipes, addToFavourites, onUpdate }) => {
                 </Link>
                 <button
                   className="sidebar-button"
-                  id="sidebar-favorites"
                   onClick={() => addToFavourites(recipe.id)}
                 >
-                  <span>Add to Favorites</span>
+                  Add to Favorites
                 </button>
                 <button onClick={() => showDeleteConfirmation(recipe.id)}>
                   Delete
                 </button>
               </div>
-
-              {/* Delete confirmation popup */}
-              {deleteConfirmId === recipe.id && (
-                <div className="delete-confirmation">
-                  <p>Are you sure you want to delete this recipe?</p>
-                  <div className="confirm-actions">
-                    <button
-                      className="btn-confirm"
-                      onClick={() => confirmDelete(recipe.id)}
-                    >
-                      Yes, Delete
-                    </button>
-                    <button className="btn-cancel" onClick={cancelDelete}>
-                      Cancel
-                    </button>
-                  </div>
-                </div>
-              )}
             </div>
+
+            {/* Delete confirmation popup */}
+            {deleteConfirmId === recipe.id && (
+              <div className="delete-confirmation">
+                <p>Are you sure you want to delete this recipe?</p>
+                <div className="confirm-actions">
+                  <button
+                    className="btn-confirm"
+                    onClick={() => confirmDelete(recipe.id)}
+                  >
+                    Yes, Delete
+                  </button>
+                  <button className="btn-cancel" onClick={cancelDelete}>
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
         ))}
       </div>

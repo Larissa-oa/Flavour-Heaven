@@ -1,0 +1,68 @@
+.recipe-details-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.recipe-details-picture-headline {
+  width: 100%; /* takes the full width of parent element */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.recipes-picture {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  object-position: center;
+  margin-top: 20px;
+}
+
+.recipe-name {
+  text-decoration: underline;
+  padding: 10px;
+  /* text-align: center; /* centers the text */
+  /* width: 100%; making sure text is using whole width */
+}
+
+.whole-text-container {
+  background-color: #cfa12322;
+}
+
+.lists {
+  line-height: 30px;
+  padding-right: 20px;
+}
+
+#instructions-line {
+  padding-bottom: 5px;
+}
+
+.descriptions-details {
+  font-weight: bold;
+}
+
+.recipe-details-text-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%; /* make sure container is using whole width */
+  padding: 10px;
+  gap: 20px; /* gap between both containers in the row */
+}
+
+.recipe-details-text-container > div:first-child {
+  flex: 1; /* first container is taking less space */
+}
+
+.recipe-details-text-container > div:last-child {
+  flex: 2; /* second container is taking more space (double) */
+}
+
+#back-btn-details-page {
+  margin-top: 20px;
+}
