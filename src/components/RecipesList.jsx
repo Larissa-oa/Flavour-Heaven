@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import './RecipesList.css'
 
 const RecipesList = ({ recipes, addToFavourites, onUpdate }) => {
   // State for sort type
