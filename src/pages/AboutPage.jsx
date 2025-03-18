@@ -1,6 +1,6 @@
 import React from "react";
 import "./AboutPage.css";
-import ourTeamImg from "../images/our-team.jpg";
+import ourTeamImg from "../images/our-team.png";
 import linkedinIcon from "../images/linkedin-icon.png";
 import githubIcon from "../images/github-icon.png";
 

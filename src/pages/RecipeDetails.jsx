@@ -2,42 +2,46 @@ import React from "react";
 import recipesData from "../assets/recipes.json";
 import { useParams, Link } from "react-router-dom";
 
+
 const RecipeDetailPage = () => {
-  const { recipesId } = useParams(); /* destructuring the recipesId */
+  const { recipesId } = useParams(); 
   const recipeDetails = recipesData.find((recipe) => recipe.id === recipesId);
 
   console.log(recipesId, recipeDetails);
 
   return (
-    <div className="RecipeDetailsPage">
-      <h1>Recipe Details Page</h1>
-      <div className="recipe-details-container">
+    <div className="recipe-details-page" id="recipe-details-page">
+      <h1 id="recipe-details-title">Recipe Details Page</h1>
+      <div className="recipe-details-container" id="recipe-details-container">
         {recipeDetails && (
           <>
             <img
               src={recipeDetails.image || placeholderImage}
               alt="recipe-photo"
-              className="recipes-picture"
+              id="recipe-image"
+              className="recipe-image"
             />
-            <h1 className="recipe-name">{recipeDetails.name}</h1>
+      
+            <h2 id="recipe-name" className="recipe-name">{recipeDetails.name}</h2>
 
-            <div className="recipe-details-text-container">
-              <p>Name: {recipeDetails.name}</p>
-              <p>Calories: {recipeDetails.calories}</p>
-              <p>Servings: {recipeDetails.servings}</p>
-              <p>Ingredients: {recipeDetails.ingredients}</p>
-              <p>Instructions: {recipeDetails.instructions}</p>
+            <div id="recipe-details-text" className="recipe-details-text-container">
+              <p id="recipe-name-text">Name: {recipeDetails.name}</p>
+              <p id="recipe-calories-text">Calories: {recipeDetails.calories}</p>
+              <p id="recipe-servings-text">Servings: {recipeDetails.servings}</p>
+              <p id="recipe-ingredients-text">Ingredients: {recipeDetails.ingredients}</p>
+              <p id="recipe-instructions-text">Instructions: {recipeDetails.instructions}</p>
+              
               {recipeDetails.calories <= 150 ? (
-                <span className="low-calories">Low Calories</span>
+                <span id="low-calories-tag" className="low-calories">Low Calories</span>
               ) : null}
               {recipeDetails.calories > 250 ? (
-                <span className="high-calories">High Calories</span>
+                <span id="high-calories-tag" className="high-calories">High Calories</span>
               ) : null}
             </div>
 
             {/* Back button */}
-            <Link to="/">
-              <button>Back</button>
+            <Link to="/" id="back-button-link">
+              <button id="back-button" className="back-button">Back</button>
             </Link>
           </>
         )}

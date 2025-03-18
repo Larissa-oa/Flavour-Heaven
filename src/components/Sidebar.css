@@ -1,0 +1,154 @@
+/* Sidebar Styles */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 70px;
+    height: 100vw;
+    background-color: white;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:flex-start;
+    z-index: 1000;
+    transition: width 0.3s ease;
+  }
+
+  
+ 
+  .sidebar-button {
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    margin-top: 40px;
+  }
+  
+ 
+  .sidebar-link {
+    display: inline-block;
+  }
+  
+  
+  .sidebar a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 18px;
+  }
+  
+ 
+  .search-input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Sidebar Image Styling */
+  .sidebar-link img {
+    height: 40px;
+    width: auto;
+  }
+  
+  /* Sidebar Hover Effects */
+  .sidebar:hover,
+  .sidebar:hover .sidebar a,
+  .sidebar:hover .sidebar img {
+    transform: scale(1.3);
+    width: 180px;
+    background-color:white;
+  }
+  
+  /* Sidebar Favorites Button Styling */
+  #sidebar-favorites {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    background-color: #ff6f61;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 55px;
+    height: 55px;
+    transition: background-color 0.3s ease;
+    margin-left: 9px;
+  }
+  
+ 
+  #sidebar-favorites:hover {
+    background-color: #e14f3d;
+  }
+  
+  #sidebar-favorites img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+  }
+  
+  /* Search Icon Styling */
+  #search-icon {
+    height: 50px;
+    width: auto;
+    margin-left: 8px;
+  }
+
+  /* Sidebar hover Form */
+  .sidebar form {
+    display: none;
+  }
+
+  .sidebar:hover .search-form {
+    display: block;
+  }
+
+  .search-button {
+    height: 40px;
+    width: 90px;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 1.4em;
+    margin-top: 15px;
+  }
+
+  /* Sidebar Favorite Button hover */
+  .sidebar-text {
+    display: none;
+  }
+
+  .sidebar:hover  #sidebar-favorites img{
+    display: none;
+  }
+
+  .sidebar:hover  .sidebar-text {
+    display: block;
+    font-size: 1.4em;
+    font-weight: bold;
+    padding: 35px 15px;
+  }
+
+  .sidebar:hover #sidebar-favorites{
+    border-radius: 15px;
+    width: 120px;
+    height: 60px;
+  }
+
+  #icons{
+    margin-top: 100px;
+    margin-bottom: 100px;
+  }
+
+  #home-icon {
+    height: 60px;
+    margin-left: 5px;
+  }
+
+ .sidebar:hover #home-icon {
+  margin-left: 30px;
+ }

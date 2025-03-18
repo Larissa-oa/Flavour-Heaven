@@ -1,8 +1,14 @@
 .about-container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 20px;
-  font-family: "Arial", sans-serif;
+  min-height: 100vh;
+  padding-top: 120px; 
+  padding-left: 140px; 
+  font-family: 'Noto Sans Mono', monospace;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .about-image-container {
@@ -12,20 +18,20 @@
 }
 
 .about-header-image {
+  max-height: 5%;
   max-width: 50%;
-  margin-top: 100px;
+  margin-top: 20px;
   height: auto;
   border-radius: 8px;
-  box-shadow: 8px 10px 10px rgba(0, 0, 0, 0.4);
 }
 
 .about-content {
-  line-height: 1.6;
+  line-height: 1.2;
 }
 
 .about-title {
   text-align: center;
-  font-size: 2.5rem;
+  font-size: 2rem;
   margin-bottom: 20px;
   color: #333;
 }
@@ -34,6 +40,7 @@
   font-size: 1.25rem;
   margin-bottom: 50px;
   text-align: center;
+  width: 90%;
 }
 
 .team-section-title,
@@ -41,6 +48,8 @@
   font-size: 2rem;
   margin: 30px 0 20px;
   color: #333;
+  text-align: center;
+  padding-bottom: 30px;
 }
 
 .team-member {
@@ -48,7 +57,8 @@
   padding: 20px;
   background-color: #f9f9f9;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.6);
+  width: 90%;
 }
 
 .team-member h3 {
@@ -64,15 +74,15 @@
 }
 
 .larissa {
-  color: rgb(5, 195, 5);
+  color: #ff6347;
 }
 
 .rojda {
-  color: rgb(245, 2, 2);
+  color: #ff6347;
 }
 
 .vassilis {
-  color: rgb(62, 62, 255);
+  color: #ff6347;
 }
 
 .social-links {
@@ -121,6 +131,7 @@
 .mission-text {
   margin-bottom: 20px;
   font-size: 1.25rem;
+  width: 90%;
 }
 
 .closing {

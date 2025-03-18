@@ -1,22 +1,13 @@
-import recipesData from "../assets/recipes.json";
-import { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
+import './RecipesList.css';
 
-const RecipesList = () => {
-  const [recipes, setRecipes] = useState(recipesData);
-
-  const deleteBtn = (id) => {
-    const filterRecipes = recipes.filter((recipe) => {
-      return recipe.id !== id;
-    });
-    setRecipes(filterRecipes);
-  };
-
+const RecipesList = ({ recipes, addToFavourites, deleteBtn }) => {
   return (
     <>
       {recipes.map((recipe) => (
         <div key={recipe.id} id="recipe-container">
-          <img src={recipe.image} />
+          <img src={recipe.image} alt={recipe.name} />
 
           <div id="text-container">
             <p>Name: {recipe.name}</p>
@@ -29,16 +20,21 @@ const RecipesList = () => {
             {recipe.calories > 250 ? (
               <span className="high-calories">High Calories</span>
             ) : null}
+
             <section id="buttons">
               <button onClick={() => deleteBtn(recipe.id)}>Delete</button>
 
               <Link to={`/recipes/${recipe.id}`}>
-                {" "}
-                {/*  has to be in backticks and curly braces */}
-                <button>Details </button>
+                <button id="details-btn" className="btn-recipe">Details</button>
               </Link>
 
-              <button>Favorite</button>
+              <button
+                className="sidebar-button"
+                id="sidebar-favorites"
+                onClick={() => addToFavourites(recipe.id)}
+              >
+                <span>Add to Favorites</span>
+              </button>
             </section>
           </div>
         </div>

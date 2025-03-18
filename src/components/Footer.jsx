@@ -1,5 +1,6 @@
 import React from "react";
 import githubLogo from "../images/github.png";
+import './Footer.css'
 
 const Footer = () => {
   return (
