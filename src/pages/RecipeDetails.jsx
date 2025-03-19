@@ -1,14 +1,14 @@
 import React from "react";
-import recipesData from "../assets/recipes.json";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useOutletContext } from "react-router-dom";
 import "./RecipeDetails.css";
 
 const RecipeDetailPage = () => {
+  // Get recipes from context/props instead of importing JSON directly
+  const { recipes } = useOutletContext(); // This will get the recipes from context
   const { recipesId } = useParams();
-  {
-    /* destructuring the recipesId */
-  }
-  const recipeDetails = recipesData.find((recipe) => recipe.id === recipesId);
+
+  // Find the recipe in the current recipes state
+  const recipeDetails = recipes.find((recipe) => recipe.id === recipesId);
 
   return (
     <div className="recipe-details-page">
@@ -24,13 +24,10 @@ const RecipeDetailPage = () => {
               className="recipes-picture"
             />
           </div>
-
           <div className="whole-text-container">
             <h1 className="recipe-name">{recipeDetails.name}</h1>
-
             <div className="recipe-details-text-container">
               <div>
-                {/* <p><span className="descriptions-details">Name:</span> {recipeDetails.name}</p> */}
                 <p>
                   <span className="descriptions-details">Calories:</span>{" "}
                   {recipeDetails.calories}
@@ -41,12 +38,10 @@ const RecipeDetailPage = () => {
                 </p>
                 <p className="descriptions-details">Ingredients:</p>
                 <ul className="lists">
-                  {/* creating unordered list for ingredients */}
                   {recipeDetails.ingredients.map((ingredient, index) => (
                     <li key={index}>{ingredient}</li>
                   ))}
                 </ul>
-                {/* condition with calories */}
                 {recipeDetails.calories <= 150 ? (
                   <span className="low-calories">Low Calories</span>
                 ) : null}
@@ -54,7 +49,6 @@ const RecipeDetailPage = () => {
                   <span className="high-calories">High Calories</span>
                 ) : null}
               </div>
-
               <div>
                 <p className="descriptions-details">Instructions:</p>
                 <ol className="lists">
@@ -67,8 +61,6 @@ const RecipeDetailPage = () => {
               </div>
             </div>
           </div>
-
-          {/* Back button */}
           <Link to="/">
             <button id="back-btn-details-page">Back</button>
           </Link>

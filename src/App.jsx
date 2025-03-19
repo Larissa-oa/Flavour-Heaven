@@ -7,10 +7,19 @@ import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
 import RecipeDetailPage from "./pages/RecipeDetails";
 import NotFoundPage from "./pages/NotFoundPage";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Outlet } from "react-router-dom";
 import FavouriteList from "./pages/FavouriteList";
 import RecipeFormPopup from "./components/RecipeFormPopup";
 import recipesData from "./assets/recipes.json";
+
+// Create a layout component to provide the context
+function Layout({ recipes, addToFavourites, deleteBtn }) {
+  return (
+    <>
+      <Outlet context={{ recipes, addToFavourites, deleteBtn }} />
+    </>
+  );
+}
 
 function App() {
   // State for recipes and favourites
@@ -64,9 +73,19 @@ function App() {
       <Sidebar onOpenRecipeForm={openRecipeForm} />
       <div className="pages">
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/recipes/:recipesId" element={<RecipeDetailPage />} />
+          <Route
+            element={
+              <Layout
+                recipes={recipes}
+                addToFavourites={addToFavourites}
+                deleteBtn={deleteBtn}
+              />
+            }
+          >
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/recipes/:recipesId" element={<RecipeDetailPage />} />
+          </Route>
           <Route
             path="/recipes"
             element={
@@ -90,7 +109,6 @@ function App() {
         </Routes>
       </div>
       <Footer />
-
       {/* Recipe Form Popup */}
       <RecipeFormPopup
         isOpen={isRecipeFormOpen}

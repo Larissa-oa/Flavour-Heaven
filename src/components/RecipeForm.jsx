@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import recipesData from "../assets/recipes.json";
 
 const RecipeForm = ({ onAddRecipe, onClose }) => {
   const [formData, setFormData] = useState({
@@ -11,6 +10,7 @@ const RecipeForm = ({ onAddRecipe, onClose }) => {
     ingredients: [""],
     instructions: [""],
   });
+
   const [submitStatus, setSubmitStatus] = useState(null);
 
   const handleChange = (e) => {
@@ -65,26 +65,6 @@ const RecipeForm = ({ onAddRecipe, onClose }) => {
     setSubmitStatus(null);
   };
 
-  const saveRecipeToJson = (newRecipe) => {
-    try {
-      // Get current recipes
-      const updatedRecipes = [...recipesData, newRecipe];
-
-      // In a browser environment, we can't directly write to the file system
-      // This would typically be handled by a backend API
-      // For frontend-only solutions, we can use localStorage as a temporary solution
-      localStorage.setItem("recipes", JSON.stringify(updatedRecipes));
-
-      // Notify parent component about the new recipe
-      onAddRecipe(newRecipe, updatedRecipes);
-
-      return true;
-    } catch (error) {
-      console.error("Error saving recipe:", error);
-      return false;
-    }
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -92,6 +72,7 @@ const RecipeForm = ({ onAddRecipe, onClose }) => {
     const filteredIngredients = formData.ingredients.filter(
       (item) => item.trim() !== ""
     );
+
     const filteredInstructions = formData.instructions.filter(
       (item) => item.trim() !== ""
     );
@@ -108,11 +89,14 @@ const RecipeForm = ({ onAddRecipe, onClose }) => {
       timestamp: new Date().toISOString(),
     };
 
-    // Save the recipe
-    const success = saveRecipeToJson(newRecipe);
-
-    // Update status instead of closing
-    setSubmitStatus(success ? "success" : "error");
+    try {
+      // Pass the new recipe to the parent component
+      onAddRecipe(newRecipe);
+      setSubmitStatus("success");
+    } catch (error) {
+      console.error("Error adding recipe:", error);
+      setSubmitStatus("error");
+    }
   };
 
   // If we're showing the success message
@@ -169,7 +153,6 @@ const RecipeForm = ({ onAddRecipe, onClose }) => {
             required
           />
         </div>
-
         <div className="form-group">
           <label htmlFor="calories">Calories:</label>
           <input
@@ -181,7 +164,6 @@ const RecipeForm = ({ onAddRecipe, onClose }) => {
             required
           />
         </div>
-
         <div className="form-group">
           <label htmlFor="image">Image URL:</label>
           <input
@@ -193,7 +175,6 @@ const RecipeForm = ({ onAddRecipe, onClose }) => {
             required
           />
         </div>
-
         <div className="form-group">
           <label htmlFor="servings">Servings:</label>
           <input
@@ -205,7 +186,6 @@ const RecipeForm = ({ onAddRecipe, onClose }) => {
             required
           />
         </div>
-
         <div className="form-group">
           <label>Ingredients:</label>
           {formData.ingredients.map((ingredient, index) => (
@@ -222,7 +202,6 @@ const RecipeForm = ({ onAddRecipe, onClose }) => {
             Add another ingredient
           </button>
         </div>
-
         <div className="form-group">
           <label>Instructions:</label>
           {formData.instructions.map((instruction, index) => (
@@ -238,7 +217,6 @@ const RecipeForm = ({ onAddRecipe, onClose }) => {
             Add another instruction
           </button>
         </div>
-
         <div className="form-actions">
           <button type="submit" className="submit-button">
             Add Recipe
