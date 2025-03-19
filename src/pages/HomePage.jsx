@@ -20,7 +20,7 @@ const HomePage = () => {
             </span>
           </h1>
           <div className="hero-buttons">
-            <button className="btn btn-main">Start cooking</button>
+            <button className="btn btn-main">Add your own recipe</button>
             <button className="btn btn-secondary">Explore Recipes</button>
           </div>
         </div>

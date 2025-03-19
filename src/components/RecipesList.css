@@ -4,26 +4,29 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: "Arial", sans-serif;
-  background-color: #f5f5f5;
-  color: #333;
-  margin-top: 200px;
-}
-
 /* Recipes List Container */
 .recipes-page-container {
-  padding: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 95vw;
+  font-family: 'Noto Sans Mono', monospace;
+  background-color: #f5f5f5;
+  color: #333;
+  margin-top: 120px;
+  margin-left: 70px;
+  padding: 15px;
 }
 
 .recipes-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
   flex-wrap: wrap;
+}
+
+header h1 {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 2.6rem;
 }
 
 .sort-container {
@@ -65,7 +68,7 @@ body {
 }
 
 /* Recipe Image */
-#recipe-container img {
+#recipe-image {
   width: 100%;
   height: 200px;
   object-fit: cover;
@@ -73,7 +76,7 @@ body {
   transition: transform 0.3s ease;
 }
 
-#recipe-container:hover img {
+#recipe-image:hover {
   transform: scale(1.05);
 }
 
@@ -110,6 +113,8 @@ body {
   border-radius: 5px;
   display: inline-block;
   margin-top: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #1c8a3d;
 }
 
 .high-calories {
@@ -120,6 +125,8 @@ body {
   border-radius: 5px;
   display: inline-block;
   margin-top: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #c12d2d;
 }
 
 /* Buttons Section */
@@ -131,7 +138,6 @@ body {
   padding-top: 15px;
 }
 
-button,
 .btn-recipe {
   padding: 10px 18px;
   border: none;
@@ -140,41 +146,50 @@ button,
   font-size: 0.9rem;
   transition: background-color 0.3s, transform 0.2s ease;
   flex: 1;
+  background-color: #a8a9aa;
+  color: white;
 }
 
-button:hover,
 .btn-recipe:hover {
   transform: scale(1.05);
 }
 
-/* Delete Button */
-button:last-child {
-  background-color: #f44336;
-  color: white;
+#details-btn,
+#delete-btn {
+  background-color: #a8a9aa;
 }
 
-button:last-child:hover {
-  background-color: #d32f2f;
+#details-btn{
+  margin-right: 20px;
 }
-
-/* Details Button */
-#details-btn {
-  background-color: #007bff;
-  color: white;
-}
-
-#details-btn:hover {
-  background-color: #0056b3;
+#details-btn:hover,
+#delete-btn:hover {
+  background-color: #555657;
 }
 
 /* Favorite Button */
-.sidebar-button {
-  background-color: #ff6347;
+.btn-favourite {
+  background-color: #ebbbb2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
   color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  width: 55px;
+  height: 55px;
+  transition: background-color 0.3s ease;
 }
 
-.sidebar-button:hover {
-  background-color: #e67e22;
+.btn-favourite:hover {
+  background-color: #e64622;
+}
+
+#like-icon {
+  width: 30px;
+  height: 30px;
 }
 
 /* Delete confirmation popup */

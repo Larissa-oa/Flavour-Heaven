@@ -15,7 +15,7 @@ function AboutPage() {
         <h1 className="about-title">About Us</h1>
 
         <p className="about-intro">
-          Welcome to <strong>[Your App Name]</strong>, the ultimate recipe app
+          Welcome to <strong>Flavour Heaven</strong>, the ultimate recipe app
           created by three food-loving professionals who know their way around a
           kitchen, a business, and a dinner table.
         </p>
@@ -134,7 +134,7 @@ function AboutPage() {
 
         <h2 className="mission-title">Our Mission</h2>
         <p className="mission-text">
-          We created <strong>[Your App Name]</strong> to make cooking{" "}
+          We created <strong>Flavour Heaven</strong> to make cooking{" "}
           <strong>fun</strong>, <strong>easy</strong>, and{" "}
           <strong>stress-free</strong>. Whether you're a pro in the kitchen or
           someone who still burns toast (no judgment!), our app is here to help.

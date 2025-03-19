@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import './FavouriteList.css'
-
+import '../pages/FavouriteList.css'
 const FavouriteList = ({ favouriteRecipes, removeFavourite }) => {
 
     const deleteBtn = (recipeId) => {

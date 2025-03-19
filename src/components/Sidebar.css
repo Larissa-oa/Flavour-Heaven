@@ -22,23 +22,12 @@
     cursor: pointer;
     border: none;
     background: transparent;
-    margin-top: 50px;
+    margin-top: 10px;
   }
   
  
   .sidebar-link {
     display: inline-block;
-  }
-  
-  
-  .sidebar a {
-    color: white;
-    text-decoration: none;
-    display: block;
-    padding: 10px;
-    margin: 10px 0;
-    font-size: 18px;
-    margin-top: 60px;
   }
   
  
@@ -48,6 +37,8 @@
     margin-top: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    margin-left: 10px;
+    margin-bottom: 10px;
   }
   
   /* Sidebar Image Styling */
@@ -98,7 +89,11 @@
     height: 50px;
     width: auto;
     margin-left: 8px;
+    margin-top: 16px;
   }
+.sidebar:hover #search-icon {
+ margin-left: 10px;
+}
 
 .sidebar-link {
   display: inline-block;
@@ -111,7 +106,7 @@
   padding: 10px;
   margin: 10px 0;
   font-size: 18px;
-  margin-top: 60px;
+  margin-top: 10px;
 }
 
 .search-input {
@@ -152,6 +147,7 @@
   height: 55px;
   transition: background-color 0.3s ease;
   margin-left: 9px;
+  font-size: 0.7rem;
 }
 
 #sidebar-favorites:hover {
@@ -186,7 +182,6 @@
   border-radius: 15px;
   font-weight: bold;
   font-size: 1.4em;
-  margin-top: 15px;
 }
 
 /* Sidebar Favorite Button hover */
@@ -209,6 +204,13 @@
   border-radius: 15px;
   width: 120px;
   height: 60px;
+  margin-left: 15px;
+}
+
+.sidebar:hover .add-icon {
+width: 30px;
+height: 30px;
+font-size: 1.5rem;
 }
 
 #icons {
@@ -219,10 +221,12 @@
 #home-icon {
   height: 60px;
   margin-left: 5px;
+  margin-top: 50px;
 }
 
 .sidebar:hover #home-icon {
-  margin-left: 30px;
+  margin-left: 40px;
+  margin-top: 70px;
 }
 
 #add-recipe-button {
@@ -232,7 +236,6 @@
   width: 100%;
   padding: 10px 15px;
   margin-bottom: 10px;
-  background-color: #f5f5f5;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -241,20 +244,27 @@
 
 #add-recipe-button:hover {
   background-color: #e0e0e0;
+  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  border-radius: 5px;
+  padding-left: 10px;
 }
-
 .add-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 24px;
-  height: 24px;
-  background-color: #4caf50;
+  padding: 15px;
+  background-color: rgb(46, 110, 46);
   color: white;
-  font-size: 18px;
-  font-weight: bold;
+  border: none;
   border-radius: 50%;
-  line-height: 1;
+  cursor: pointer;
+  width: 55px;
+  height: 55px;
+  transition: background-color 0.3s ease;
+  margin-left: 3px;
+  margin-top:30px;
+  font-size: 2.4rem;
 }
 
 #add-recipe-button .sidebar-text {

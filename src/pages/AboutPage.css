@@ -1,7 +1,7 @@
 .about-container {
   min-height: 100vh;
-  padding-top: 120px; 
-  padding-left: 140px; 
+  margin-top: 120px;
+  margin-left: 200px;
   font-family: 'Noto Sans Mono', monospace;
   font-size: 1rem;
   display: flex;
@@ -18,11 +18,9 @@
 }
 
 .about-header-image {
-  max-height: 5%;
+  max-height: 80vw;
   max-width: 50%;
-  margin-top: 20px;
-  height: auto;
-  border-radius: 8px;
+  margin-top: -50px;
 }
 
 .about-content {
@@ -34,13 +32,16 @@
   font-size: 2rem;
   margin-bottom: 20px;
   color: #333;
+  text-transform: uppercase;
 }
 
 .about-intro {
   font-size: 1.25rem;
   margin-bottom: 50px;
   text-align: center;
-  width: 90%;
+  width: 80%;
+  margin-left: 70px;
+  margin-bottom: 70px;
 }
 
 .team-section-title,
@@ -59,6 +60,10 @@
   border-radius: 8px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.6);
   width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .team-member h3 {
@@ -73,14 +78,8 @@
   margin-bottom: 25px;
 }
 
-.larissa {
-  color: #ff6347;
-}
-
-.rojda {
-  color: #ff6347;
-}
-
+.larissa,
+.rojda,
 .vassilis {
   color: #ff6347;
 }
@@ -89,6 +88,7 @@
   display: flex;
   gap: 15px;
   margin-top: 15px;
+  justify-content: center;
 }
 
 .social-button {
@@ -131,7 +131,8 @@
 .mission-text {
   margin-bottom: 20px;
   font-size: 1.25rem;
-  width: 90%;
+  width: 80%;
+  margin-left: 70px;
 }
 
 .closing {
@@ -139,4 +140,5 @@
   font-size: 1.8rem;
   margin-top: 40px;
   color: #333;
+  margin-left: 70px;
 }

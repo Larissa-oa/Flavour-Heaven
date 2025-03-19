@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import './RecipesList.css'
+import heartimg from '../images/likes.png'
 
 const RecipesList = ({ recipes, addToFavourites, onUpdate }) => {
   // State for sort type
@@ -86,8 +88,9 @@ const RecipesList = ({ recipes, addToFavourites, onUpdate }) => {
   return (
     <div className="recipes-page-container">
       <div className="recipes-header">
+        <header>
         <h1>Recipes</h1>
-
+        </header>
         <div className="sort-container">
           <label htmlFor="sort">Sort by:</label>
           <select
@@ -108,10 +111,8 @@ const RecipesList = ({ recipes, addToFavourites, onUpdate }) => {
       <div className="recipes-list">
         {sortedRecipes.map((recipe) => (
           <div key={recipe.id} id="recipe-container">
-            {/* Display the recipe image */}
-            <img
-              src={recipe.image || "/placeholder-recipe.jpg"}
-              alt={recipe.name}
+            <img src={recipe.image || "/placeholder-recipe.jpg"}
+              alt={recipe.name} id="recipe-image"
               onError={(e) => {
                 e.target.onerror = null;
                 e.target.src = "/placeholder-recipe.jpg";
@@ -133,24 +134,23 @@ const RecipesList = ({ recipes, addToFavourites, onUpdate }) => {
               </div>
 
               <div id="buttons">
+              <span>
                 <Link to={`/recipes/${recipe.id}`}>
                   <button id="details-btn" className="btn-recipe">
                     Details
                   </button>
                 </Link>
-                <button
-                  className="sidebar-button"
-                  onClick={() => addToFavourites(recipe.id)}
-                >
-                  Add to Favorites
-                </button>
-                <button onClick={() => showDeleteConfirmation(recipe.id)}>
+                <button className="btn-recipe"id="delete-btn" onClick={() => showDeleteConfirmation(recipe.id)}>
                   Delete
+                </button>
+                </span>
+                <button
+                  className="btn-favourite" onClick={() => addToFavourites(recipe.id)}>
+                 <img src={heartimg}  id='like-icon'/>
                 </button>
               </div>
             </div>
 
-            {/* Delete confirmation popup */}
             {deleteConfirmId === recipe.id && (
               <div className="delete-confirmation">
                 <p>Are you sure you want to delete this recipe?</p>
