@@ -1,5 +1,6 @@
 import React from "react";
 import "./HomePage.css";
+import { Link } from "react-router-dom";
 import Carousel from "../components/Carousel";
 import eggtoast from "../images/pasta.png";
 import peoplecooking from "../images/cooking2.png";
@@ -32,7 +33,9 @@ const HomePage = () => {
           </h1>
           <div className="hero-buttons">
             <button className="btn btn-main">Add your own recipe</button>
-            <button className="btn btn-secondary">Explore Recipes</button>
+            <Link to="/recipes">
+              <button className="btn btn-secondary">Explore Recipes</button>
+            </Link>
           </div>
         </div>
       </section>

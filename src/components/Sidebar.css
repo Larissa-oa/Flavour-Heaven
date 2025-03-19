@@ -159,7 +159,8 @@
 #search-icon {
   height: 50px;
   width: auto;
-  margin-left: 15px;
+  margin-left: 22px;
+  margin-top: 25px;
 }
 
 /* Sidebar hover Form */
@@ -177,6 +178,14 @@
   border-radius: 15px;
   font-weight: bold;
   font-size: 1.4em;
+}
+
+.sidebar:hover #search-icon {
+  margin-left: 53px;
+}
+
+.sidebar:hover .search-button {
+  margin-left: 45px;
 }
 
 /* Sidebar Favorite Button hover */
@@ -216,12 +225,12 @@
 #home-icon {
   height: 60px;
   margin-left: 5px;
-  margin-top: 90px;
+  margin-top: 50px;
 }
 
 .sidebar:hover #home-icon {
   margin-left: 40px;
-  margin-top: 90px;
+  margin-top: 180px;
 }
 
 #add-recipe-button {

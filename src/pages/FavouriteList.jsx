@@ -19,11 +19,14 @@ const FavouriteList = ({ favouriteRecipes, removeFavourite }) => {
             {favouriteRecipes.map((recipe) => (
               <li key={recipe.id} className="recipe-card">
                 <div className="recipe-card-content">
-                  <img src={recipe.image} alt={recipe.name} />
+                  <Link to={`/recipes/${recipe.id}`}>
+                    <img src={recipe.image} alt={recipe.name} />
+                  </Link>
                   <div className="recipe-details">
                     <p>{recipe.name}</p>
                     <p>Calories: {recipe.calories}</p>
                     <p>Servings: {recipe.servings}</p>
+
                     <button
                       className="delete-btn"
                       onClick={() => deleteBtn(recipe.id)}

@@ -11,11 +11,12 @@ body {
 }
 
 #favourite-page {
-  max-width: 1200px;
+  max-width: 85vw;
   margin: 0 auto;
   padding: 20px;
   padding-left: 70px;
   padding-top: 120px;
+  height: 100vw;
 }
 
 h1 {
@@ -23,6 +24,7 @@ h1 {
   text-align: center;
   color: #2c3e50;
   margin-bottom: 40px;
+  margin-top: 30px;
 }
 
 #nofav-container {
@@ -70,6 +72,7 @@ h1 {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   padding: 15px;
   position: relative;
+  border: 2px solid #e75e1a;
 }
 
 #favourite-text-container li:hover {
@@ -79,7 +82,7 @@ h1 {
 
 #favourite-text-container img {
   width: 100%;
-  height: 180px;
+  height: 350px;
   object-fit: cover;
   border-radius: 5px;
 }
@@ -138,11 +141,11 @@ h1 {
 }
 
 .favorite-active {
-  background-color: #ffb6c1; /* Light pink background */
+  background-color: #f32544;
 }
 
 .favorite-active img {
-  background-color: #f32544; /* Makes the heart icon appear darker */
+  background-color: #f32544;
 }
 
 @media (max-width: 768px) {

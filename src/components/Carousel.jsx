@@ -55,7 +55,7 @@ const Carousel = () => {
     // Set new interval
     timerRef.current = setInterval(() => {
       moveCarousel(1);
-    }, 4000);
+    }, 3000);
   };
 
   const moveCarousel = (direction) => {

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import heartimg from "../images/likes.png";
-import "./SearchResults.css"; // You'll need to create this CSS file
+import "./SearchResults.css";
 
 const SearchResults = ({
   searchResults,
@@ -21,10 +21,20 @@ const SearchResults = ({
     setDeleteConfirmId(null);
   };
 
-  // Function to confirm and execute deletion
   const confirmDelete = (id) => {
-    deleteBtn(id);
+    if (typeof deleteBtn === "function") {
+      deleteBtn(id);
+    } else {
+      console.error("deleteBtn is not a function", deleteBtn);
+    }
     setDeleteConfirmId(null);
+  };
+
+  const isInFavorites = (recipeId) => {
+    return (
+      Array.isArray(favouriteRecipes) &&
+      favouriteRecipes.some((recipe) => recipe.id === recipeId)
+    );
   };
 
   return (
@@ -82,10 +92,12 @@ const SearchResults = ({
                     </button>
                   </span>
                   <button
-                    className="btn-favourite"
+                    className={`btn-favourite ${
+                      isInFavorites(recipe.id) ? "favorite-active" : ""
+                    }`}
                     onClick={() => addToFavourites(recipe.id)}
                   >
-                    <img src={heartimg} id="like-icon" alt="Like" />
+                    <img src={heartimg} id="like-icon" alt="Like icon" />
                   </button>
                 </div>
               </div>

@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./RecipesList.css";
 import heartimg from "../images/likes.png";
-import upArrowImg from "../images/up-arrow.png";
 
 const RecipesList = ({
   recipes,
@@ -114,15 +113,17 @@ const RecipesList = ({
       <div className="recipes-list">
         {sortedRecipes.map((recipe) => (
           <div key={recipe.id} id="recipe-container">
-            <img
-              src={recipe.image || "/placeholder-recipe.jpg"}
-              alt={recipe.name}
-              id="recipe-image"
-              onError={(e) => {
-                e.target.onerror = null;
-                e.target.src = "/placeholder-recipe.jpg";
-              }}
-            />
+            <Link to={`/recipes/${recipe.id}`}>
+              <img
+                src={recipe.image || "/placeholder-recipe.jpg"}
+                alt={recipe.name}
+                id="recipe-image"
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = "/placeholder-recipe.jpg";
+                }}
+              />
+            </Link>
             <div id="text-container">
               <h3>{recipe.name}</h3>
               <p>Calories: {recipe.calories}</p>
@@ -179,10 +180,6 @@ const RecipesList = ({
           </div>
         ))}
       </div>
-
-      <button className="back-to-top" onClick={scrollToTop}>
-        <img src={upArrowImg} alt="Back to Top" className="back-to-top-img" />
-      </button>
     </div>
   );
 };
