@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import heartimg from "../images/likes.png";
 import "./SearchResults.css";
@@ -7,63 +7,92 @@ const SearchResults = ({
   searchResults,
   searchQuery,
   addToFavourites,
-  deleteBtn,
+  deleteBtn, // This should be a function from parent to delete recipes
+  favouriteRecipes = [],
 }) => {
-  const [deleteConfirmId, setDeleteConfirmId] = React.useState(null);
+  const [deleteConfirmId, setDeleteConfirmId] = useState(null);
+  const [localResults, setLocalResults] = useState(searchResults);
+
+  // Sync local results with props when searchResults changes
+  useEffect(() => {
+    setLocalResults(searchResults);
+  }, [searchResults]);
 
   // Function to show delete confirmation
-  const showDeleteConfirmation = (id) => {
+  const showDeleteConfirmation = (e, id) => {
+    e.preventDefault();
+    e.stopPropagation();
     setDeleteConfirmId(id);
   };
 
   // Function to cancel deletion
-  const cancelDelete = () => {
-    setDeleteConfirmId(null);
-  };
-
-  const confirmDelete = (id) => {
-    if (typeof deleteBtn === "function") {
-      deleteBtn(id);
-    } else {
-      console.error("deleteBtn is not a function", deleteBtn);
+  const cancelDelete = (e) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
     }
     setDeleteConfirmId(null);
   };
 
+  // Function to handle delete confirmation
+  const confirmDelete = (id) => {
+    console.log("SearchResults - Deleting recipe:", id);
+
+    // Call the parent's delete function
+    if (typeof deleteBtn === "function") {
+      deleteBtn(id);
+
+      // Immediately update local state for better UX
+      setLocalResults((prevResults) =>
+        prevResults.filter((recipe) => recipe.id !== id)
+      );
+    } else {
+      console.error("deleteBtn is not a function:", deleteBtn);
+    }
+
+    setDeleteConfirmId(null);
+  };
+
+  // Handle favorite click with proper event prevention
+  const handleFavoriteClick = (e, recipeId) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (typeof addToFavourites === "function") {
+      addToFavourites(recipeId);
+    } else {
+      console.error("addToFavourites is not a function");
+    }
+  };
+
+  // Fixed isInFavorites function
   const isInFavorites = (recipeId) => {
-    return (
-      Array.isArray(favouriteRecipes) &&
-      favouriteRecipes.some((recipe) => recipe.id === recipeId)
-    );
+    if (!Array.isArray(favouriteRecipes)) return false;
+    return favouriteRecipes.some((fav) => fav.id === recipeId);
   };
 
   return (
     <div className="search-results-container">
-      <div className="search-header">
-        <h1>Search Results for "{searchQuery}"</h1>
-        <p>{searchResults.length} results found</p>
-      </div>
-
-      {searchResults.length === 0 ? (
-        <div className="no-results">
-          <p>No recipes found matching your search. Try another keyword.</p>
-          <Link to="/recipes">
-            <button className="return-btn">Back to All Recipes</button>
-          </Link>
-        </div>
+      <h2>Search Results for: {searchQuery}</h2>
+      {localResults.length === 0 ? (
+        <p>No recipes found for "{searchQuery}"</p>
       ) : (
         <div className="recipes-list">
-          {searchResults.map((recipe) => (
+          {localResults.map((recipe) => (
             <div key={recipe.id} id="recipe-container">
-              <img
-                src={recipe.image || "/placeholder-recipe.jpg"}
-                alt={recipe.name}
-                id="recipe-image"
-                onError={(e) => {
-                  e.target.onerror = null;
-                  e.target.src = "/placeholder-recipe.jpg";
-                }}
-              />
+              <Link
+                to={`/recipes/${recipe.id}`}
+                onClick={(e) => e.stopPropagation()}
+              >
+                <img
+                  src={recipe.image || "/placeholder-recipe.jpg"}
+                  alt={recipe.name}
+                  id="recipe-image"
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = "/placeholder-recipe.jpg";
+                  }}
+                />
+              </Link>
               <div id="text-container">
                 <h3>{recipe.name}</h3>
                 <p>Calories: {recipe.calories}</p>
@@ -78,7 +107,10 @@ const SearchResults = ({
                 </div>
                 <div id="buttons">
                   <span>
-                    <Link to={`/recipes/${recipe.id}`}>
+                    <Link
+                      to={`/recipes/${recipe.id}`}
+                      onClick={(e) => e.stopPropagation()}
+                    >
                       <button id="details-btn" className="btn-recipe">
                         Details
                       </button>
@@ -86,7 +118,7 @@ const SearchResults = ({
                     <button
                       className="btn-recipe"
                       id="delete-btn"
-                      onClick={() => showDeleteConfirmation(recipe.id)}
+                      onClick={(e) => showDeleteConfirmation(e, recipe.id)}
                     >
                       Delete
                     </button>
@@ -95,7 +127,7 @@ const SearchResults = ({
                     className={`btn-favourite ${
                       isInFavorites(recipe.id) ? "favorite-active" : ""
                     }`}
-                    onClick={() => addToFavourites(recipe.id)}
+                    onClick={(e) => handleFavoriteClick(e, recipe.id)}
                   >
                     <img src={heartimg} id="like-icon" alt="Like icon" />
                   </button>
@@ -111,7 +143,10 @@ const SearchResults = ({
                     >
                       Yes, Delete
                     </button>
-                    <button className="btn-cancel" onClick={cancelDelete}>
+                    <button
+                      className="btn-cancel"
+                      onClick={(e) => cancelDelete(e)}
+                    >
                       Cancel
                     </button>
                   </div>
@@ -121,11 +156,6 @@ const SearchResults = ({
           ))}
         </div>
       )}
-      <div className="search-footer">
-        <Link to="/recipes">
-          <button className="return-btn">Back to All Recipes</button>
-        </Link>
-      </div>
     </div>
   );
 };

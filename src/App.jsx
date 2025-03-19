@@ -99,6 +99,21 @@ function App() {
     setSearchResults(results);
   };
 
+  // In your App.jsx or wherever you manage recipes state
+  const handleDeleteRecipe = (id) => {
+    console.log("Parent - Deleting recipe with ID:", id);
+
+    // Update main recipes state
+    setRecipes((prevRecipes) =>
+      prevRecipes.filter((recipe) => recipe.id !== id)
+    );
+
+    // IMPORTANT: Update search results state too if you maintain it separately
+    setSearchResults((prevResults) =>
+      prevResults.filter((recipe) => recipe.id !== id)
+    );
+  };
+
   return (
     <div>
       <Navbar />
@@ -124,7 +139,7 @@ function App() {
               <RecipesList
                 recipes={recipes}
                 addToFavourites={addToFavourites}
-                deleteBtn={deleteBtn}
+                deleteBtn={handleDeleteRecipe}
                 favouriteRecipes={favouriteRecipes}
               />
             }
@@ -145,7 +160,7 @@ function App() {
                 searchResults={searchResults}
                 searchQuery={searchQuery}
                 addToFavourites={addToFavourites}
-                deleteBtn={deleteBtn}
+                deleteBtn={handleDeleteRecipe}
                 favouriteRecipes={favouriteRecipes}
               />
             }

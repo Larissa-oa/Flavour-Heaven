@@ -32,9 +32,8 @@ const HomePage = () => {
             </span>
           </h1>
           <div className="hero-buttons">
-            <button className="btn btn-main">Add your own recipe</button>
             <Link to="/recipes">
-              <button className="btn btn-secondary">Explore Recipes</button>
+              <button className="btn btn-main">Explore Recipes</button>
             </Link>
           </div>
         </div>

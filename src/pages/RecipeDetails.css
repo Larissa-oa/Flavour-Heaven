@@ -1,6 +1,5 @@
-
 body {
-  font-family: 'Noto Sans Mono', sans-serif;
+  font-family: "Noto Sans Mono", sans-serif;
   background-color: #f7f8fa;
   color: #333;
 }
@@ -17,7 +16,7 @@ body {
 }
 
 .recipe-details-picture-headline {
-  width: 85vw;/* takes the full width of parent element */
+  width: 85vw; /* takes the full width of parent element */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -78,4 +77,16 @@ body {
 
 #back-btn-details-page {
   margin-top: 20px;
+}
+
+#back-btn-details-page {
+  padding: 16px 35px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  transition: background-color 0.3s, transform 0.2s ease;
+  flex: 1;
+  background-color: #a8a9aa;
+  color: white;
 }

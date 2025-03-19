@@ -61,7 +61,7 @@ const RecipeDetailPage = () => {
               </div>
             </div>
           </div>
-          <Link to="/">
+          <Link to="/recipes">
             <button id="back-btn-details-page">Back</button>
           </Link>
         </>
