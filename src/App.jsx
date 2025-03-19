@@ -10,6 +10,7 @@ import NotFoundPage from "./pages/NotFoundPage";
 import { Routes, Route, Outlet } from "react-router-dom";
 import FavouriteList from "./pages/FavouriteList";
 import RecipeFormPopup from "./components/RecipeFormPopup";
+import SearchResults from "./pages/SearchResults";
 import recipesData from "./assets/recipes.json";
 
 // Create a layout component to provide the context
@@ -26,6 +27,8 @@ function App() {
   const [recipes, setRecipes] = useState(recipesData);
   const [favouriteRecipes, setFavouriteRecipes] = useState([]);
   const [isRecipeFormOpen, setIsRecipeFormOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
 
   // Function to handle adding to favourites
   const addToFavourites = (id) => {
@@ -52,25 +55,43 @@ function App() {
 
   // Handle opening and closing the recipe form
   const openRecipeForm = () => {
-    console.log("Opening recipe form");
     setIsRecipeFormOpen(true);
   };
 
   const closeRecipeForm = () => {
-    console.log("Closing recipe form");
     setIsRecipeFormOpen(false);
   };
 
   // Handle adding a new recipe
   const handleAddRecipe = (newRecipe) => {
-    console.log("Adding new recipe:", newRecipe);
     setRecipes([...recipes, newRecipe]);
+  };
+
+  // New function to handle search
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+
+    // Filter recipes that match the search query in name or ingredients
+    const results = recipes.filter((recipe) => {
+      // Check if recipe name includes the search query
+      const nameMatch = recipe.name.toLowerCase().includes(query.toLowerCase());
+
+      // Check if any ingredient includes the search query
+      const ingredientMatch = recipe.ingredients.some((ingredient) =>
+        ingredient.toLowerCase().includes(query.toLowerCase())
+      );
+
+      // Return true if either name or ingredients match
+      return nameMatch || ingredientMatch;
+    });
+
+    setSearchResults(results);
   };
 
   return (
     <div>
       <Navbar />
-      <Sidebar onOpenRecipeForm={openRecipeForm} />
+      <Sidebar onOpenRecipeForm={openRecipeForm} onSearch={handleSearch} />
       <div className="pages">
         <Routes>
           <Route
@@ -102,6 +123,17 @@ function App() {
               <FavouriteList
                 favouriteRecipes={favouriteRecipes}
                 removeFavourite={removeFavourite}
+              />
+            }
+          />
+          <Route
+            path="/search"
+            element={
+              <SearchResults
+                searchResults={searchResults}
+                searchQuery={searchQuery}
+                addToFavourites={addToFavourites}
+                deleteBtn={deleteBtn}
               />
             }
           />

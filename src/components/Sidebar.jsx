@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import searchIcon from "../images/searchicon.png";
 import homeIcon from "../images/houseicon.png";
 import likesIcon from "../images/likes.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../components/Sidebar.css";
 
-const Sidebar = ({ onOpenRecipeForm }) => {
+const Sidebar = ({ onOpenRecipeForm, onSearch }) => {
+  const [searchInput, setSearchInput] = useState("");
+  const navigate = useNavigate();
+
   // Add a handler that explicitly calls the passed function
   const handleAddRecipeClick = () => {
     console.log("Add recipe button clicked");
@@ -14,6 +17,21 @@ const Sidebar = ({ onOpenRecipeForm }) => {
       console.log("button clicked");
     } else {
       console.error("onOpenRecipeForm is not a function");
+    }
+  };
+
+  // Handle search input change
+  const handleSearchChange = (event) => {
+    setSearchInput(event.target.value);
+  };
+
+  // Handle search form submission
+  const handleSearchSubmit = (event) => {
+    event.preventDefault();
+    if (searchInput.trim()) {
+      onSearch(searchInput);
+      navigate("/search"); // Navigate to search results page
+      setSearchInput(""); // Clear the input field after submission
     }
   };
 
@@ -38,7 +56,6 @@ const Sidebar = ({ onOpenRecipeForm }) => {
           </button>
         </Link>
 
-        {/* Add type="button" to ensure it's treated as a button */}
         <button
           type="button"
           className="sidebar-button"
@@ -49,23 +66,25 @@ const Sidebar = ({ onOpenRecipeForm }) => {
           <div className="add-icon">+</div>
         </button>
 
-        <Link to="*" className="sidebar-link" id="search">
+        <div className="sidebar-link" id="search">
           <button className="sidebar-button">
             <img src={searchIcon} id="search-icon" alt="Search Icon" />
-            <form className="search-form">
+            <form className="search-form" onSubmit={handleSearchSubmit}>
               <label htmlFor="searchInput" id="search-label"></label>
               <input
                 type="text"
                 id="searchInput"
                 className="search-input"
                 placeholder="Enter recipe"
+                value={searchInput}
+                onChange={handleSearchChange}
               />
               <button type="submit" className="search-button">
                 Search
               </button>
             </form>
           </button>
-        </Link>
+        </div>
       </div>
     </div>
   );
