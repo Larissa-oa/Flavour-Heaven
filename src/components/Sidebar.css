@@ -159,7 +159,7 @@
 #search-icon {
   height: 50px;
   width: auto;
-  margin-left: 8px;
+  margin-left: 15px;
 }
 
 /* Sidebar hover Form */
@@ -216,12 +216,12 @@
 #home-icon {
   height: 60px;
   margin-left: 5px;
-  margin-top: 50px;
+  margin-top: 90px;
 }
 
 .sidebar:hover #home-icon {
   margin-left: 40px;
-  margin-top: 70px;
+  margin-top: 90px;
 }
 
 #add-recipe-button {

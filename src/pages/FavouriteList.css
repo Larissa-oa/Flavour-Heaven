@@ -137,6 +137,14 @@ h1 {
   background-color: darkred;
 }
 
+.favorite-active {
+  background-color: #ffb6c1; /* Light pink background */
+}
+
+.favorite-active img {
+  background-color: #f32544; /* Makes the heart icon appear darker */
+}
+
 @media (max-width: 768px) {
   #favourite-text-container ul {
     grid-template-columns: repeat(2, 1fr);

@@ -1,11 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import '../pages/FavouriteList.css'
+import "../pages/FavouriteList.css";
 const FavouriteList = ({ favouriteRecipes, removeFavourite }) => {
-
-    const deleteBtn = (recipeId) => {
-      removeFavourite(recipeId);
-    };
+  const deleteBtn = (recipeId) => {
+    removeFavourite(recipeId);
+  };
 
   return (
     <div id="favourite-page">
@@ -25,9 +24,12 @@ const FavouriteList = ({ favouriteRecipes, removeFavourite }) => {
                     <p>{recipe.name}</p>
                     <p>Calories: {recipe.calories}</p>
                     <p>Servings: {recipe.servings}</p>
-                    <button 
-                      className="delete-btn" 
-                      onClick={() => deleteBtn(recipe.id)}>Delete</button>
+                    <button
+                      className="delete-btn"
+                      onClick={() => deleteBtn(recipe.id)}
+                    >
+                      Remove
+                    </button>
                   </div>
                 </div>
               </li>

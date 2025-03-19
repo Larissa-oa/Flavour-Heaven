@@ -32,14 +32,25 @@ function App() {
 
   // Function to handle adding to favourites
   const addToFavourites = (id) => {
-    console.log(`Adding ${id} to fav`);
-    // Find the recipe by ID and add it to favouriteRecipes
-    const favouriteRecipe = recipes.find((recipe) => recipe.id === id);
-    if (favouriteRecipe) {
-      setFavouriteRecipes((prevFavourites) => [
-        ...prevFavourites,
-        favouriteRecipe,
-      ]);
+    // Check if the recipe is already in favorites
+    const isAlreadyFavorite = favouriteRecipes.some(
+      (recipe) => recipe.id === id
+    );
+
+    if (isAlreadyFavorite) {
+      // If already in favorites, remove it
+      setFavouriteRecipes(
+        favouriteRecipes.filter((recipe) => recipe.id !== id)
+      );
+    } else {
+      // If not in favorites, add it
+      const favouriteRecipe = recipes.find((recipe) => recipe.id === id);
+      if (favouriteRecipe) {
+        setFavouriteRecipes((prevFavourites) => [
+          ...prevFavourites,
+          favouriteRecipe,
+        ]);
+      }
     }
   };
 
@@ -114,6 +125,7 @@ function App() {
                 recipes={recipes}
                 addToFavourites={addToFavourites}
                 deleteBtn={deleteBtn}
+                favouriteRecipes={favouriteRecipes}
               />
             }
           />
@@ -134,6 +146,7 @@ function App() {
                 searchQuery={searchQuery}
                 addToFavourites={addToFavourites}
                 deleteBtn={deleteBtn}
+                favouriteRecipes={favouriteRecipes}
               />
             }
           />

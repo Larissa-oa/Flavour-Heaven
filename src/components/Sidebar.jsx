@@ -67,7 +67,8 @@ const Sidebar = ({ onOpenRecipeForm, onSearch }) => {
         </button>
 
         <div className="sidebar-link" id="search">
-          <button className="sidebar-button">
+          {/* Fixed: Changed button to div */}
+          <div className="sidebar-button">
             <img src={searchIcon} id="search-icon" alt="Search Icon" />
             <form className="search-form" onSubmit={handleSearchSubmit}>
               <label htmlFor="searchInput" id="search-label"></label>
@@ -83,7 +84,7 @@ const Sidebar = ({ onOpenRecipeForm, onSearch }) => {
                 Search
               </button>
             </form>
-          </button>
+          </div>
         </div>
       </div>
     </div>

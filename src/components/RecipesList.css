@@ -10,17 +10,9 @@
   font-family: "Noto Sans Mono", monospace;
   background-color: #f5f5f5;
   color: #333;
-  margin-top: 120px;
   margin-left: 70px;
   padding: 15px;
-}
-
-.recipes-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 50px;
-  flex-wrap: wrap;
+  padding-top: 120px; /* Add padding-top instead to make space for the sticky header */
 }
 
 header h1 {
@@ -186,9 +178,9 @@ header h1 {
   transition: background-color 0.3s ease;
 }
 
-.btn-favourite:hover {
+/* .btn-favourite:hover {
   background-color: #e64622;
-}
+} */
 
 #like-icon {
   width: 30px;
@@ -224,6 +216,61 @@ header h1 {
 .btn-cancel {
   background-color: #ccc;
   color: #333;
+}
+
+.favorite-active button {
+  background-color: #f32544;
+}
+
+.favorite-active img {
+  background-color: #f32544;
+}
+
+/* Sticky Header */
+.recipes-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #f5f5f5;
+  z-index: 10;
+  padding: 10px 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: adds a shadow for visual separation */
+}
+
+/* Back to Top Button */
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: rgba(
+    231,
+    94,
+    36,
+    0.3
+  ); /* Optional: semi-transparent background */
+  border: 1px solid black;
+  border-radius: 10px;
+  cursor: pointer;
+  z-index: 999;
+  padding: 10px; /* Adjust padding to fit the image */
+  transition: background-color 0.3s, transform 0.2s ease;
+}
+
+.back-to-top:hover {
+  background-color: rgba(0, 0, 0, 0.5); /* Darken on hover */
+  transform: scale(1.05);
+}
+
+.back-to-top-img {
+  width: 30px; /* Adjust image size as needed */
+  height: 30px; /* Adjust image size as needed */
+  display: block; /* Ensure the image fills the button */
 }
 
 /* Mobile Responsiveness */
